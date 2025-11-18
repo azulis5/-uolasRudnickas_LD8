@@ -1,0 +1,296 @@
+/* ===================================== */
+/*              FONT IMPORTS             */
+/* ===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+/* ===================================== */
+/*         RUST SPALVŲ KINTAMIEJI        */
+/* ===================================== */
+
+:root {
+    --rust-main: #d36f1a;
+    --rust-dark: #3c2e1e;
+    --rust-bg: #0d0d0d;
+    --rust-bg2: #161616;
+    --rust-text: #c8c8c8;
+}
+
+/* ===================================== */
+/*            BENDRAS PUSLAPIS           */
+/* ===================================== */
+
+body {
+    background: var(--rust-bg) !important;
+    color: var(--rust-text) !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navmenu a,
+.logo h1,
+.page-title h1,
+.hero h2,
+.resume .resume-title,
+.features-item h3,
+.service-item h3 {
+    font-family: 'Oswald', sans-serif !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*     VIENODAS SEKCŲ PADDING (LAB#4)    */
+/* ===================================== */
+
+.section,
+.about.section,
+.resume.section,
+.services.section,
+.contact.section,
+.portfolio.section,
+.testimonials.section {
+    background: var(--rust-bg2) !important;
+    border: 2px solid #1a1a1a !important;
+    padding: 60px 30px !important;
+    box-shadow: 0 0 10px #000000aa !important;
+    border-radius: 6px !important;
+}
+
+/* ===================================== */
+/*                HEADER                 */
+/* ===================================== */
+
+.header {
+    background: #000000e8 !important;
+    border-bottom: 2px solid var(--rust-dark) !important;
+}
+
+.navmenu a {
+    color: var(--rust-text) !important;
+}
+
+/* ===================================== */
+/*       KOMPONENTAS #1 — NUORODOS      */
+/* ===================================== */
+
+a {
+    color: var(--rust-main) !important;
+    text-decoration: none !important;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #ff8c37 !important;
+    text-shadow: 0 0 6px #d36f1a88;
+}
+
+.navmenu .active {
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*       KOMPONENTAS #2 — MYGTUKAI      */
+/* ===================================== */
+
+button,
+input[type="submit"],
+input[type="button"],
+.contact button {
+    background: var(--rust-main) !important;
+    color: #fff !important;
+    border: 2px solid var(--rust-dark) !important;
+    padding: 10px 20px !important;
+    font-family: 'Oswald', sans-serif !important;
+    text-transform: uppercase;
+    border-radius: 4px !important;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.contact button:hover {
+    background: #ff8c37 !important;
+    box-shadow: 0 0 12px #d36f1aaa !important;
+}
+
+/* ===================================== */
+/*                FOOTER                 */
+/* ===================================== */
+
+.footer {
+    background: #0d0d0d !important;
+    border-top: 2px solid var(--rust-dark) !important;
+}
+
+.footer h3,
+.footer p,
+.footer a {
+    color: var(--rust-text) !important;
+}
+
+/* ===================================== */
+/*               HERO / HOME             */
+/* ===================================== */
+
+.hero img {
+    filter: grayscale(40%) brightness(0.55) contrast(1.4);
+}
+
+.hero p {
+    color: var(--rust-text) !important;
+}
+
+/* ===================================== */
+/*               ABOUT PAGE              */
+/* ===================================== */
+
+.about img {
+    border: 2px solid var(--rust-dark);
+    border-radius: 6px;
+}
+
+/* ===================================== */
+/*              PORTFOLIO                */
+/* ===================================== */
+
+.portfolio .portfolio-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    border-radius: 6px !important;
+}
+
+.portfolio .portfolio-info {
+    background: #0d0d0d !important;
+    color: var(--rust-text);
+}
+
+/* ===================================== */
+/*              TESTIMONIALS             */
+/* ===================================== */
+
+.testimonial-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    border-radius: 6px !important;
+}
+
+/* ===================================== */
+/*           SKILLS / PROGRESS           */
+/* ===================================== */
+
+.skills .progress {
+    background-color: #111 !important;
+    border: 1px solid var(--rust-dark) !important;
+}
+
+.skills .progress-bar {
+    background-color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*              STATS SECTION            */
+/* ===================================== */
+
+.stats .stats-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    border-radius: 6px;
+}
+
+.stats i {
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*              RESUME PAGE              */
+/* ===================================== */
+
+.resume .resume-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    padding: 25px !important;
+    border-radius: 6px !important;
+}
+
+.resume .resume-item h4 {
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*             SERVICES PAGE             */
+/* ===================================== */
+
+.service-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    border-radius: 6px !important;
+    transition: 0.2s;
+}
+
+.service-item:hover {
+    border-color: var(--rust-main) !important;
+    box-shadow: 0 0 15px #d36f1a88 !important;
+}
+
+.service-item .icon {
+    background: #1d1d1d !important;
+    border: 2px solid var(--rust-dark);
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*             CONTACT PAGE              */
+/* ===================================== */
+
+.contact .info-item {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+}
+
+.contact form {
+    background: #141414 !important;
+    border: 2px solid var(--rust-dark) !important;
+    padding: 25px !important;
+    border-radius: 6px !important;
+}
+
+.contact input,
+.contact textarea {
+    background: #1a1a1a !important;
+    color: var(--rust-text) !important;
+    border: 2px solid var(--rust-dark) !important;
+}
+
+/* ===================================== */
+/*            BREADCRUMBS                */
+/* ===================================== */
+
+.breadcrumbs {
+    background: #0d0d0d !important;
+    border-top: 2px solid var(--rust-dark);
+    border-bottom: 2px solid var(--rust-dark);
+}
+
+.breadcrumbs a,
+.breadcrumbs li {
+    color: var(--rust-text) !important;
+}
+
+.breadcrumbs a:hover {
+    color: var(--rust-main) !important;
+}
+
+/* ===================================== */
+/*             PAGE TITLES               */
+/* ===================================== */
+
+.page-title {
+    background: #141414 !important;
+    border-bottom: 2px solid var(--rust-dark) !important;
+}
+
+.page-title p {
+    color: var(--rust-text) !important;
+}
