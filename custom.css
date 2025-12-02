@@ -1,0 +1,281 @@
+/* --------------------------------------------------
+   CUSTOM.CSS – Ažuolas Rudnickas
+-------------------------------------------------- */
+
+/* ----------------------------
+   1. Tipografija ir spalvos
+----------------------------- */
+
+/* Google Fonts override */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  letter-spacing: 1px;
+}
+
+/* Oranžinė spalva visai temai */
+:root {
+  --accent: #d86b1f;
+  --accent-hover: #ff842f;
+  --text-light: #ffffff;
+}
+
+/* ----------------------------
+   2. Header / Navigation
+----------------------------- */
+
+#header {
+  background: #000000;
+  border-bottom: 2px solid var(--accent);
+}
+
+#navmenu a {
+  color: #dcdcdc;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+/* Hover */
+#navmenu a:hover {
+  color: var(--accent);
+}
+
+/* Active page highlight */
+#navmenu .active {
+  color: var(--accent) !important;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Paselect of previous green underline */
+#navmenu a::after {
+  background-color: var(--accent) !important;
+}
+
+/* Hide the dropdown completely */
+#navmenu .dropdown {
+  display: none !important;
+}
+
+/* ----------------------------
+   3. HERO sekcija
+----------------------------- */
+
+#hero img {
+  filter: brightness(0.35);
+}
+
+#hero h2 {
+  color: var(--accent);
+  font-size: 64px;
+  font-weight: 700;
+}
+
+#hero p {
+  font-size: 26px;
+  color: #e0e0e0;
+}
+
+/* Typed green line → ORANGE */
+.typed-cursor,
+.typed span {
+  border-bottom: 2px solid var(--accent) !important;
+}
+
+/* ----------------------------
+   4. Social ikonų stilius
+----------------------------- */
+
+.social-links a {
+  background: #222;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
+  transition: 0.3s ease;
+  border: 1px solid var(--accent);
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ----------------------------
+   5. Fade-in animacijos
+----------------------------- */
+
+/* LABAI RYŠKUS FADE-IN + SLIDE efektas */
+@keyframes strongFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(20px) scale(1.02);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Taikoma VISOMS sekcijoms */
+section,
+.section,
+.container[data-aos],
+.row[data-aos] {
+  animation: strongFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ----------------------------
+   6. Prefers reduced motion
+----------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  section {
+    animation: none !important;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+/* ----------------------------
+   7. Buttons
+----------------------------- */
+
+.btn,
+button,
+input[type="submit"] {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  transition: 0.25s ease;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+/* ----------------------------
+   8. Page loader animacija
+----------------------------- */
+
+#preloader {
+  background: #000;
+}
+
+#preloader::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinner 0.9s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/* SPALVŲ KEITIMAS RUST STYLE */
+#services {
+  position: relative;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ff6a00, #a91a00, #00ff37, #00305c);
+  background-size: 400% 400%;
+  animation: rustColors ss ease infinite;
+}
+
+@keyframes rustColors {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Konteineris figūroms */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bazinis figūrų stilius */
+.shape {
+  position: absolute;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Apskritimas */
+.shape.circle {
+  width: 60px;
+  height: 60px;
+  background: rgba(98, 0, 255, 0.4);
+  border-radius: 50%;
+  top: 20%;
+  left: 10%;
+  animation-name: float, scale, rotate;
+}
+
+/* Kvadratas */
+.shape.square {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 255, 242, 0.4);
+  top: 70%;
+  left: 80%;
+  animation-duration: 9s;
+  animation-name: float, scale, rotate;
+}
+
+/* Trikampis */
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid rgba(0, 255, 21, 0.4);
+  top: 40%;
+  left: 50%;
+  animation-name: float, rotate;
+}
+
+/* Judėjimas aukštyn-žemyn */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
+}
+
+/* Sukimosi animacija */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Didėjimo / mažėjimo animacija */
+@keyframes scale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
