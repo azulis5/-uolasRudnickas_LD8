@@ -1,296 +1,338 @@
-/* ===================================== */
-/*              FONT IMPORTS             */
-/* ===================================== */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+/* --------------------------------------------------
+   CUSTOM.CSS – Ažuolas Rudnickas
+-------------------------------------------------- */
 
-/* ===================================== */
-/*         RUST SPALVŲ KINTAMIEJI        */
-/* ===================================== */
+/* ----------------------------
+   1. Tipografija ir spalvos
+----------------------------- */
 
+/* Google Fonts override */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  letter-spacing: 1px;
+}
+
+/* Oranžinė spalva visai temai */
 :root {
-    --rust-main: #d36f1a;
-    --rust-dark: #3c2e1e;
-    --rust-bg: #0d0d0d;
-    --rust-bg2: #161616;
-    --rust-text: #c8c8c8;
+  --accent: #d86b1f;
+  --accent-hover: #ff842f;
+  --text-light: #ffffff;
 }
 
-/* ===================================== */
-/*            BENDRAS PUSLAPIS           */
-/* ===================================== */
+/* ----------------------------
+   2. Header / Navigation
+----------------------------- */
 
-body {
-    background: var(--rust-bg) !important;
-    color: var(--rust-text) !important;
-    font-family: 'Roboto Condensed', sans-serif !important;
+#header {
+  background: #000000;
+  border-bottom: 2px solid var(--accent);
 }
 
-h1, h2, h3, h4, h5, h6,
-.navmenu a,
-.logo h1,
-.page-title h1,
-.hero h2,
-.resume .resume-title,
-.features-item h3,
-.service-item h3 {
-    font-family: 'Oswald', sans-serif !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--rust-main) !important;
+#navmenu a {
+  color: #dcdcdc;
+  transition: 0.3s ease;
+  font-weight: 500;
 }
 
-/* ===================================== */
-/*     VIENODAS SEKCŲ PADDING (LAB#4)    */
-/* ===================================== */
+/* Hover */
+#navmenu a:hover {
+  color: var(--accent);
+}
 
+/* Active page highlight */
+#navmenu .active {
+  color: var(--accent) !important;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Paselect of previous green underline */
+#navmenu a::after {
+  background-color: var(--accent) !important;
+}
+
+/* Hide the dropdown completely */
+#navmenu .dropdown {
+  display: none !important;
+}
+
+/* ----------------------------
+   3. HERO sekcija
+----------------------------- */
+
+#hero img {
+  filter: brightness(0.35);
+}
+
+#hero h2 {
+  color: var(--accent);
+  font-size: 64px;
+  font-weight: 700;
+}
+
+#hero p {
+  font-size: 26px;
+  color: #e0e0e0;
+}
+
+/* Typed green line → ORANGE */
+.typed-cursor,
+.typed span {
+  border-bottom: 2px solid var(--accent) !important;
+}
+
+/* ----------------------------
+   4. Social ikonų stilius
+----------------------------- */
+
+.social-links a {
+  background: #222;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
+  transition: 0.3s ease;
+  border: 1px solid var(--accent);
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ----------------------------
+   5. Fade-in animacijos
+----------------------------- */
+
+/* LABAI RYŠKUS FADE-IN + SLIDE efektas */
+@keyframes strongFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(20px) scale(1.02);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Taikoma VISOMS sekcijoms */
+section,
 .section,
-.about.section,
-.resume.section,
-.services.section,
-.contact.section,
-.portfolio.section,
-.testimonials.section {
-    background: var(--rust-bg2) !important;
-    border: 2px solid #1a1a1a !important;
-    padding: 60px 30px !important;
-    box-shadow: 0 0 10px #000000aa !important;
-    border-radius: 6px !important;
+.container[data-aos],
+.row[data-aos] {
+  animation: strongFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ===================================== */
-/*                HEADER                 */
-/* ===================================== */
+/* ----------------------------
+   6. Prefers reduced motion
+----------------------------- */
 
-.header {
-    background: #000000e8 !important;
-    border-bottom: 2px solid var(--rust-dark) !important;
+@media (prefers-reduced-motion: reduce) {
+  section {
+    animation: none !important;
+  }
+  * {
+    transition: none !important;
+  }
 }
 
-.navmenu a {
-    color: var(--rust-text) !important;
-}
+/* ----------------------------
+   7. Buttons
+----------------------------- */
 
-/* ===================================== */
-/*       KOMPONENTAS #1 — NUORODOS      */
-/* ===================================== */
-
-a {
-    color: var(--rust-main) !important;
-    text-decoration: none !important;
-    transition: 0.2s;
-}
-
-a:hover {
-    color: #ff8c37 !important;
-    text-shadow: 0 0 6px #d36f1a88;
-}
-
-.navmenu .active {
-    color: var(--rust-main) !important;
-}
-
-/* ===================================== */
-/*       KOMPONENTAS #2 — MYGTUKAI      */
-/* ===================================== */
-
+.btn,
 button,
-input[type="submit"],
-input[type="button"],
-.contact button {
-    background: var(--rust-main) !important;
-    color: #fff !important;
-    border: 2px solid var(--rust-dark) !important;
-    padding: 10px 20px !important;
-    font-family: 'Oswald', sans-serif !important;
-    text-transform: uppercase;
-    border-radius: 4px !important;
-    letter-spacing: 1px;
-    transition: 0.2s;
+input[type="submit"] {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  transition: 0.25s ease;
 }
 
+.btn:hover,
 button:hover,
-input[type="submit"]:hover,
-.contact button:hover {
-    background: #ff8c37 !important;
-    box-shadow: 0 0 12px #d36f1aaa !important;
+input[type="submit"]:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
 }
 
-/* ===================================== */
-/*                FOOTER                 */
-/* ===================================== */
+/* ----------------------------
+   8. Page loader animacija
+----------------------------- */
 
-.footer {
-    background: #0d0d0d !important;
-    border-top: 2px solid var(--rust-dark) !important;
+#preloader {
+  background: #000;
 }
 
-.footer h3,
-.footer p,
-.footer a {
-    color: var(--rust-text) !important;
+#preloader::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinner 0.9s linear infinite;
 }
 
-/* ===================================== */
-/*               HERO / HOME             */
-/* ===================================== */
-
-.hero img {
-    filter: grayscale(40%) brightness(0.55) contrast(1.4);
+@keyframes spinner {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/* SPALVŲ KEITIMAS RUST STYLE */
+#services {
+  position: relative;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ff6a00, #a91a00, #00ff37, #00305c);
+  background-size: 400% 400%;
+  animation: rustColors 10s ease infinite;
 }
 
-.hero p {
-    color: var(--rust-text) !important;
+
+@keyframes rustColors {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ===================================== */
-/*               ABOUT PAGE              */
-/* ===================================== */
-
-.about img {
-    border: 2px solid var(--rust-dark);
-    border-radius: 6px;
+/* Konteineris figūroms */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* ===================================== */
-/*              PORTFOLIO                */
-/* ===================================== */
-
-.portfolio .portfolio-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    border-radius: 6px !important;
+/* Bazinis figūrų stilius */
+.shape {
+  position: absolute;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
 }
 
-.portfolio .portfolio-info {
-    background: #0d0d0d !important;
-    color: var(--rust-text);
+/* Apskritimas */
+.shape.circle {
+  width: 60px;
+  height: 60px;
+  background: rgba(98, 0, 255, 0.4);
+  border-radius: 50%;
+  top: 20%;
+  left: 10%;
+  animation-name: float, scale, rotate;
 }
 
-/* ===================================== */
-/*              TESTIMONIALS             */
-/* ===================================== */
-
-.testimonial-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    border-radius: 6px !important;
+/* Kvadratas */
+.shape.square {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 255, 242, 0.4);
+  top: 70%;
+  left: 80%;
+  animation-duration: 9s;
+  animation-name: float, scale, rotate;
 }
 
-/* ===================================== */
-/*           SKILLS / PROGRESS           */
-/* ===================================== */
-
-.skills .progress {
-    background-color: #111 !important;
-    border: 1px solid var(--rust-dark) !important;
+/* Trikampis */
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid rgba(0, 255, 21, 0.4);
+  top: 40%;
+  left: 50%;
+  animation-name: float, rotate;
 }
 
-.skills .progress-bar {
-    background-color: var(--rust-main) !important;
+/* Judėjimas aukštyn-žemyn */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
 }
 
-/* ===================================== */
-/*              STATS SECTION            */
-/* ===================================== */
-
-.stats .stats-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    border-radius: 6px;
+/* Sukimosi animacija */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.stats i {
-    color: var(--rust-main) !important;
+/* Didėjimo / mažėjimo animacija */
+@keyframes scale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
 }
 
-/* ===================================== */
-/*              RESUME PAGE              */
-/* ===================================== */
-
-.resume .resume-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    padding: 25px !important;
-    border-radius: 6px !important;
+/* ZAIDIMAS */
+#gameBoard {
+    display: grid !important;
+    justify-content: center;
+    align-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.resume .resume-item h4 {
-    color: var(--rust-main) !important;
+/* Kortelės bendras stilius */
+.memory-card {
+    width: 100px;
+    height: 100px;
+    background: #1c1c1c;
+    color: white;
+    font-size: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s;
 }
 
-/* ===================================== */
-/*             SERVICES PAGE             */
-/* ===================================== */
-
-.service-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    border-radius: 6px !important;
-    transition: 0.2s;
+.memory-card.flipped {
+    transform: rotateY(180deg);
 }
 
-.service-item:hover {
-    border-color: var(--rust-main) !important;
-    box-shadow: 0 0 15px #d36f1a88 !important;
+/* Kortelės priekinė ir galinė pusės */
+.front-face,
+.back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
 }
 
-.service-item .icon {
-    background: #1d1d1d !important;
-    border: 2px solid var(--rust-dark);
-    color: var(--rust-main) !important;
+.front-face {
+    background: #333;
 }
 
-/* ===================================== */
-/*             CONTACT PAGE              */
-/* ===================================== */
-
-.contact .info-item {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
+.back-face {
+    transform: rotateY(180deg);
+    background: white;
+    color: black;
 }
 
-.contact form {
-    background: #141414 !important;
-    border: 2px solid var(--rust-dark) !important;
-    padding: 25px !important;
-    border-radius: 6px !important;
-}
-
-.contact input,
-.contact textarea {
-    background: #1a1a1a !important;
-    color: var(--rust-text) !important;
-    border: 2px solid var(--rust-dark) !important;
-}
-
-/* ===================================== */
-/*            BREADCRUMBS                */
-/* ===================================== */
-
-.breadcrumbs {
-    background: #0d0d0d !important;
-    border-top: 2px solid var(--rust-dark);
-    border-bottom: 2px solid var(--rust-dark);
-}
-
-.breadcrumbs a,
-.breadcrumbs li {
-    color: var(--rust-text) !important;
-}
-
-.breadcrumbs a:hover {
-    color: var(--rust-main) !important;
-}
-
-/* ===================================== */
-/*             PAGE TITLES               */
-/* ===================================== */
-
-.page-title {
-    background: #141414 !important;
-    border-bottom: 2px solid var(--rust-dark) !important;
-}
-
-.page-title p {
-    color: var(--rust-text) !important;
+.matched {
+    background: #28a745 !important;
+    color: white !important;
+    cursor: default;
 }
